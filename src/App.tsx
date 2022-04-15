@@ -3,9 +3,11 @@ import Button from './ui/Button';
 import Input from './ui/Input';
 import Section from './ui/Section';
 import Mark from './ui/Mark';
+import Checkbox from './ui/Checkbox';
 
 export default function App() {
   const [inputValue, setInputValue] = useState<string>('');
+  const [checkboxValue, setCheckboxValue] = useState<boolean>(false);
 
   return (
     <section className='container'>
@@ -38,6 +40,30 @@ export default function App() {
         <h2>Mark</h2>
         <Mark />
         <Mark size='big' />
+      </article>
+      <article>
+        <h2>Checkbox</h2>
+        <h2>{String(checkboxValue)}</h2>
+        <Checkbox
+          id='checkbox1'
+          label='Option One'
+          checked={checkboxValue}
+          onChange={() => setCheckboxValue((prevState) => !prevState)}
+        />
+        <Checkbox id='checkbox2' label='Option Two' onChange={() => {}} />
+        <Checkbox
+          id='checkbox2'
+          label='Option Two'
+          disabled
+          onChange={() => {}}
+        />
+        <Checkbox
+          id='checkbox2'
+          label='Option Two'
+          disabled
+          checked
+          onChange={() => {}}
+        />
       </article>
     </section>
   );

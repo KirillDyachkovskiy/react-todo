@@ -1,4 +1,5 @@
 :root {
+  --white: rgba(255, 255, 255, 1);
   --accent: rgba(77, 213, 153, 1);
   --accent-hover: rgba(73, 182, 134, 1);
   --secondary: rgba(242, 242, 242, 1);
