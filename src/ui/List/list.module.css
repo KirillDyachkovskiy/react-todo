@@ -1,10 +1,16 @@
-.section__header {
+.list__header {
   padding-bottom: 20px;
   margin-bottom: 30px;
   border-bottom: 1px solid var(--secondary);
 }
 
-.section__title {
+.list__title {
   margin: 0;
   font-size: var(--32px);
+}
+
+.list__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

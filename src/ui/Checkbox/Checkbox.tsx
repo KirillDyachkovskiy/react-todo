@@ -3,7 +3,7 @@ import s from './checkbox.module.css';
 
 interface ICheckbox {
   id: string;
-  checked?: boolean;
+  checked: boolean;
   onChange: ChangeEventHandler<HTMLInputElement>;
   label?: string;
   disabled?: boolean;
@@ -11,7 +11,7 @@ interface ICheckbox {
 
 export default function Checkbox({
   id,
-  checked = false,
+  checked,
   onChange,
   label,
   disabled = false,
