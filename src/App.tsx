@@ -66,8 +66,11 @@ export default function App() {
       <article>
         <h2>Menu</h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-          <Menu items={[{ id: 0, name: 'Все задачи', colorId: 0 }]} />
-          <Menu items={lists} />
+          <Menu
+            name='Все задачи'
+            items={[{ id: 0, name: 'Все задачи', colorId: 0 }]}
+          />
+          <Menu name='sidebar' items={lists} />
         </div>
       </article>
     </section>
