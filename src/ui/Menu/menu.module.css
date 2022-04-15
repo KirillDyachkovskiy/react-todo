@@ -7,6 +7,10 @@
   flex-direction: column;
 }
 
+.menu .menu__li:first-child {
+  margin-bottom: 30px;
+}
+
 .menu__radio {
   clip: rect(0 0 0 0);
   height: 1px;
@@ -43,5 +47,8 @@
 }
 
 .menu__label {
+  overflow: hidden;
+  white-space: nowrap;
   margin-left: 25px;
+  text-overflow: ellipsis;
 }
