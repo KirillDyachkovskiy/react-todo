@@ -1,0 +1,24 @@
+.cross {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  font-size: var(--14px);
+  background-color: var(--text-secondary);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1em;
+  transition: all 0.1s ease-in-out;
+}
+
+.cross:hover, .cross:active {
+  background-color: var(--cross);
+}
+
+.cross:active {
+  transform: scale(0.9);
+}

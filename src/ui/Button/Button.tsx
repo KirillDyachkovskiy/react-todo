@@ -1,8 +1,9 @@
+import { MouseEventHandler } from 'react';
 import s from './button.module.css';
 
 interface IButton {
   children: string;
-  onClick: () => void;
+  onClick: MouseEventHandler<HTMLButtonElement>;
   type?: 'accent' | 'secondary';
 }
 

@@ -37,5 +37,5 @@
 .button_type_secondary:active,
 .button_type_secondary:focus-visible {
   background-color: var(--secondary-hover);
-  color: var(--text-secondary-hover);
+  color: var(--text-secondary);
 }
