@@ -5,7 +5,6 @@ interface IButton {
   children: string;
 }
 
-export default function Button({children}: IButton) {
-  return <button className={s.button}>{children}</button>
-  ;
+export default function Button({ children }: IButton) {
+  return <button className={s.button}>{children}</button>;
 }
