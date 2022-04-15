@@ -30,11 +30,12 @@
 
 .button_type_secondary {
   background-color: var(--secondary);
-  color: var(--text-seondary);
+  color: var(--text-secondary);
 }
 
 .button_type_secondary:hover,
 .button_type_secondary:active,
 .button_type_secondary:focus-visible {
   background-color: var(--secondary-hover);
+  color: var(--text-secondary-hover);
 }
