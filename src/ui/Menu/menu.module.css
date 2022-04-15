@@ -16,6 +16,7 @@
 }
 
 .menu__item {
+  position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -31,6 +32,7 @@
 
 .menu__icon {
   position: absolute;
+  left: 13px;
 }
 
 .menu__mark {
@@ -41,5 +43,5 @@
 }
 
 .menu__label {
-  margin-left: 20px;
+  margin-left: 25px;
 }
