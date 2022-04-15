@@ -1,15 +1,15 @@
-import { TColorOld } from '../../types/types';
+import getColorById from '../../helpers/getColorById';
 import s from './mark.module.css';
 
 interface IMark {
-  color?: TColorOld;
+  colorId?: number;
   size?: 'small' | 'big';
 }
 
-export default function Mark({ color = 'blue', size = 'small' }: IMark) {
+export default function Mark({ colorId = 3, size = 'small' }: IMark) {
   return (
     <div
-      style={{ backgroundColor: `var(--${color})` }}
+      style={{ backgroundColor: `var(--${getColorById(colorId)})` }}
       className={`${s.mark} ${s[`mark_size_${size}`]}`}
     />
   );
