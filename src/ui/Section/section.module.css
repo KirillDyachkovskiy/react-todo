@@ -1,0 +1,10 @@
+.section__header {
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--secondary);
+}
+
+.section__title {
+  margin: 0;
+  font-size: var(--32px);
+}

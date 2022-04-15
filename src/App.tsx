@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from 'react';
-import Button from './Button';
-import Input from './Input';
+import Button from './ui/Button';
+import Input from './ui/Input';
+import Section from './ui/Section';
 
 export default function App() {
   const [inputValue, setInputValue] = useState<string>('');
@@ -27,6 +28,10 @@ export default function App() {
             setInputValue(e.target.value)
           }
         />
+      </article>
+      <article>
+        <h2>Section</h2>
+        <Section title='Фронтэнд'>Content</Section>
       </article>
     </section>
   );
