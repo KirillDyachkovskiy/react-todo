@@ -1,0 +1,16 @@
+.layout {
+  max-width: 746px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  height: 100vh;
+}
+
+.layout__aside {
+  flex: 0 0 200px;
+  background-color: var(--aside);
+}
+
+.layout__content {
+  background-color: var(--white);
+}
