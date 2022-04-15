@@ -1,14 +1,22 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import Button from './ui/Button';
 import Input from './ui/Input';
 import Section from './ui/Section';
 import Mark from './ui/Mark';
 import Checkbox from './ui/Checkbox';
 import Cross from './ui/Cross';
+import data from './assets/database.json';
+import { TList } from './types/types';
+import Menu from './ui/Menu';
 
 export default function App() {
   const [inputValue, setInputValue] = useState<string>('');
   const [checkboxValue, setCheckboxValue] = useState<boolean>(false);
+  const [lists, setLists] = useState<TList[]>([]);
+
+  useEffect(() => {
+    setLists(data.lists);
+  }, []);
 
   return (
     <section className='container'>
@@ -54,6 +62,13 @@ export default function App() {
       <article>
         <h2>Cross</h2>
         <Cross onClick={() => {}} />
+      </article>
+      <article>
+        <h2>Menu</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <Menu items={[{ id: 0, name: 'Все задачи', colorId: 0 }]} />
+          <Menu items={lists} />
+        </div>
       </article>
     </section>
   );

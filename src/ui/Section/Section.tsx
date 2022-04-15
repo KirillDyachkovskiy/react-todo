@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
-import { TColor } from '../../types/types';
+import { TColorOld } from '../../types/types';
 import s from './section.module.css';
 
 interface ITitle {
   title: string;
-  color?: TColor;
+  color?: TColorOld;
   children: ReactNode;
 }
 

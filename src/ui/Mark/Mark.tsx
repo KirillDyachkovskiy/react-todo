@@ -1,8 +1,8 @@
-import { TColor } from '../../types/types';
+import { TColorOld } from '../../types/types';
 import s from './mark.module.css';
 
 interface IMark {
-  color?: TColor;
+  color?: TColorOld;
   size?: 'small' | 'big';
 }
 
