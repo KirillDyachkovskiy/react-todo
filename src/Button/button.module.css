@@ -13,12 +13,18 @@
   transform: scale(0.9);
 }
 
+.button:focus {
+  outline: none;
+}
+
 .button_type_accent {
   background-color: var(--accent);
   color: var(--text-accent);
 }
 
-.button_type_accent:hover, .button_type_accent:active {
+.button_type_accent:hover,
+.button_type_accent:active,
+.button_type_accent:focus-visible {
   background-color: var(--accent-hover);
 }
 
@@ -27,6 +33,8 @@
   color: var(--text-seondary);
 }
 
-.button_type_secondary:hover, .button_type_secondary:active {
+.button_type_secondary:hover,
+.button_type_secondary:active,
+.button_type_secondary:focus-visible {
   background-color: var(--secondary-hover);
 }
