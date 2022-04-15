@@ -1,3 +1,13 @@
+:root {
+  --accent: rgba(77, 213, 153, 1);
+  --accent-hover: rgba(73, 182, 134, 1);
+  --secondary: rgba(244, 246, 248, 1);
+  --secondary-hover: rgba(222, 222, 224, 1);
+  --text-accent: rgba(255, 255, 255, 1);
+  --text-seondary: rgba(156, 156, 156, 1);
+  --14px: 14px;
+}
+
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;

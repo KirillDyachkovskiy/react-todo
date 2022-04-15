@@ -6,7 +6,12 @@ export default function App() {
       <h1>UI library</h1>
       <article>
         <h2>Button</h2>
-        <Button>Click me!</Button>
+        <Button onClick={() => alert('salam')} type='accent'>
+          Click me!
+        </Button>
+        <Button onClick={() => alert('aleykum')} type='secondary'>
+          Click me!
+        </Button>
       </article>
     </section>
   );
