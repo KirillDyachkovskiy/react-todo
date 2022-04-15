@@ -40,6 +40,7 @@ export default function App() {
       <article>
         <h2>Mark</h2>
         <Mark />
+        <Mark size='big' />
       </article>
       <article>
         <h2>Checkbox</h2>
