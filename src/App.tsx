@@ -37,6 +37,9 @@ export default function App() {
         <Button onClick={() => {}} type='secondary'>
           Click me!
         </Button>
+        <Button onClick={() => {}} type='air'>
+          Click me!
+        </Button>
       </article>
       <article>
         <h2>Input</h2>

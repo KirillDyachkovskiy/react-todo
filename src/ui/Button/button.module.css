@@ -39,3 +39,15 @@
   background-color: var(--secondary-hover);
   color: var(--text-secondary);
 }
+
+.button_type_air {
+  color: var(--text-secondary);
+  background-color: inherit;
+  padding: 0;
+}
+
+.button_type_air:hover,
+.button_type_air:active,
+.button_type_air:focus-visible {
+  color: var(--accent-hover);
+}

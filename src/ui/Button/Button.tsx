@@ -1,10 +1,10 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 import s from './button.module.css';
 
 interface IButton {
-  children: string;
+  children: ReactNode;
   onClick: MouseEventHandler<HTMLButtonElement>;
-  type?: 'accent' | 'secondary';
+  type?: 'accent' | 'secondary' | 'air';
 }
 
 export default function Button({
