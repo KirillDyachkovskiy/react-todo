@@ -112,11 +112,11 @@ export default function App() {
       </article>
       <article>
         <h2>NewListForm</h2>
-        <NewListForm id='newListForm1' colors={colors} onSubmit={console.log} />
+        <NewListForm id='newListForm1' colors={colors} onSubmit={() => {}} />
       </article>
       <article>
         <h2>NewTaskForm</h2>
-        <NewTaskForm id='newTaskForm1' onSubmit={console.log} />
+        <NewTaskForm id='newTaskForm1' onSubmit={() => {}} />
       </article>
     </section>
   );
