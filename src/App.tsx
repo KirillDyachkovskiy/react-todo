@@ -1,23 +1,27 @@
 import { ChangeEvent, useEffect, useState } from 'react';
+import { TColor, TList, TTask } from './types/types';
 import Button from './ui/Button';
 import Input from './ui/Input';
 import Mark from './ui/Mark';
 import Checkbox from './ui/Checkbox';
 import Cross from './ui/Cross';
-import { TList, TTask } from './types/types';
 import Menu from './ui/Menu';
 import List from './ui/List';
+import ColorPicker from './ui/ColorPicker';
 import data from './assets/database.json';
 
 export default function App() {
   const [inputValue, setInputValue] = useState<string>('');
   const [checkboxValue, setCheckboxValue] = useState<boolean>(false);
+  const [selectedColor, setSelectedColor] = useState<number | null>(null);
   const [lists, setLists] = useState<TList[]>([]);
   const [tasks, setTasks] = useState<TTask[]>([]);
+  const [colors, setColors] = useState<TColor[]>([]);
 
   useEffect(() => {
     setLists(data.lists);
     setTasks(data.tasks);
+    setColors(data.colors);
   }, []);
 
   return (
@@ -93,6 +97,15 @@ export default function App() {
             },
             ...lists,
           ]}
+        />
+      </article>
+      <article>
+        <h2>ColorPicker</h2>
+        <ColorPicker
+          name='colorPicker1'
+          value={selectedColor}
+          onChange={setSelectedColor}
+          colors={colors}
         />
       </article>
     </section>
