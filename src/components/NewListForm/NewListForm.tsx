@@ -9,7 +9,7 @@ import s from './newListForm.module.css';
 interface INewListForm {
   id: string;
   colors: TColor[];
-  onSubmit: (name: string, colorId: number) => void;
+  onSubmit: (title: string, colorId: number) => void;
 }
 
 export default function NewListForm({ id, colors, onSubmit }: INewListForm) {

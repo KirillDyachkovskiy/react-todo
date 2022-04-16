@@ -10,6 +10,7 @@ import List from './ui/List';
 import ColorPicker from './ui/ColorPicker';
 import NewListForm from './components/NewListForm';
 import data from './assets/database.json';
+import NewTaskForm from './components/NewTaskForm';
 
 export default function App() {
   const [inputValue, setInputValue] = useState<string>('');
@@ -111,7 +112,11 @@ export default function App() {
       </article>
       <article>
         <h2>NewListForm</h2>
-        <NewListForm id='newListForm' colors={colors} onSubmit={console.log} />
+        <NewListForm id='newListForm1' colors={colors} onSubmit={console.log} />
+      </article>
+      <article>
+        <h2>NewTaskForm</h2>
+        <NewTaskForm id='newTaskForm1' onSubmit={console.log} />
       </article>
     </section>
   );

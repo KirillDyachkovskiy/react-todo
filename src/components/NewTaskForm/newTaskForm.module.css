@@ -1,0 +1,10 @@
+.newTaskForm__box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.newTaskForm__submit {
+  display: flex;
+  gap: 5px;
+}
