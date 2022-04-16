@@ -8,6 +8,7 @@ import Cross from './ui/Cross';
 import Menu from './ui/Menu';
 import List from './ui/List';
 import ColorPicker from './ui/ColorPicker';
+import NewListForm from './components/NewListForm';
 import data from './assets/database.json';
 
 export default function App() {
@@ -107,6 +108,10 @@ export default function App() {
           onChange={setSelectedColor}
           colors={colors}
         />
+      </article>
+      <article>
+        <h2>NewListForm</h2>
+        <NewListForm id='newListForm' colors={colors} onSubmit={console.log} />
       </article>
     </section>
   );

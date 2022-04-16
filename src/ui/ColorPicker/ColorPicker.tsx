@@ -19,7 +19,7 @@ export default function ColorPicker({
   return (
     <ul className={s.colorPicker}>
       {colors.map((color: TColor) => (
-        <li>
+        <li key={color.id}>
           <label htmlFor={`${name} ${color.id}`}>
             <input
               className={s.colorPicker__radio}
