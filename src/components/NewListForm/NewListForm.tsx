@@ -1,20 +1,20 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import Input from '../../ui/Input';
 import Cross from '../../ui/Cross';
 import Button from '../../ui/Button';
 import ColorPicker from '../../ui/ColorPicker';
-import { TColor } from '../../types/types';
+import { TColor, TColorsResponse, todoAPI } from '../../types/types';
 import s from './newListForm.module.css';
 
 interface INewListForm {
   id: string;
-  colors: TColor[];
   onSubmit: (title: string, colorId: number) => void;
 }
 
-export default function NewListForm({ id, colors, onSubmit }: INewListForm) {
+export default function NewListForm({ id, onSubmit }: INewListForm) {
   const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
   const [listName, setListName] = useState<string>('');
+  const [colors, setColors] = useState<TColor[]>([]);
   const [listColorId, setListColorId] = useState<number>(1);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -23,6 +23,12 @@ export default function NewListForm({ id, colors, onSubmit }: INewListForm) {
     setListName('');
     setIsPopupVisible(false);
   };
+
+  useEffect(() => {
+    todoAPI
+      .getColors()
+      .then(({ data }: { data: TColorsResponse }) => setColors(data));
+  }, []);
 
   return (
     <form className={s.newListForm} onSubmit={handleSubmit}>

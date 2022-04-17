@@ -1,22 +1,18 @@
 import Checkbox from '../Checkbox';
-import getColorById from '../../helpers/getColorById';
 import { TTask } from '../../types/types';
 import s from './list.module.css';
 
 interface IList {
   title: string;
-  colorId?: number;
+  color?: string;
   tasks: TTask[];
 }
 
-export default function List({ title, colorId = 1, tasks }: IList) {
+export default function List({ title, color = 'blue', tasks }: IList) {
   return (
     <article>
       <div className={s.list__header}>
-        <h1
-          style={{ color: `var(--${getColorById(colorId)})` }}
-          className={s.list__title}
-        >
+        <h1 style={{ color: `var(--${color})` }} className={s.list__title}>
           {title}
         </h1>
       </div>

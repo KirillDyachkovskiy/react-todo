@@ -10,6 +10,8 @@
     "@types/node": "^16.11.27",
     "@types/react": "^18.0.5",
     "@types/react-dom": "^18.0.1",
+    "axios": "^0.26.1",
+    "json-server": "^0.17.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "5.0.1",
@@ -22,7 +24,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "lint:fix": "eslint ./ --fix"
+    "lint:fix": "eslint ./ --fix",
+    "fake-server": "json-server ./src/assets/database.json --watch --port 3001"
   },
   "eslintConfig": {
     "extends": [
@@ -54,7 +57,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.4.0",
-    "prettier": "^2.6.2",
-    "husky": "^7.0.0"
+    "husky": "^7.0.0",
+    "prettier": "^2.6.2"
   }
 }

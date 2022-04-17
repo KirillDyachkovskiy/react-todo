@@ -1,17 +1,15 @@
 import Menu from '../ui/Menu';
 import NewListForm from '../components/NewListForm';
-import { TColor, TTask, TItems } from '../types/types';
+import { TExpandedList } from '../types/types';
 import s from './layout.module.css';
 import List from '../ui/List';
 import NewTaskForm from '../components/NewTaskForm';
 
 interface ILayout {
-  lists: Array<TItems>;
-  colors: Array<TColor>;
-  tasks: Array<TTask>;
+  lists: TExpandedList[];
 }
 
-export default function Layout({ lists, colors, tasks }: ILayout) {
+export default function Layout({ lists }: ILayout) {
   return (
     <main className={s.layout}>
       <aside className={s.layout__aside}>
@@ -40,17 +38,16 @@ export default function Layout({ lists, colors, tasks }: ILayout) {
           ]}
         />
         <div className={s.layout__newListForm}>
-          <NewListForm id='appListForm' colors={colors} onSubmit={() => {}} />
+          <NewListForm id='appListForm' onSubmit={() => {}} />
         </div>
       </aside>
       <section className={s.layout__lists}>
-        {lists.map((list: TItems) => (
-          <article className={s.layout__list}>
+        {lists.map((list: TExpandedList) => (
+          <article key={list.id} className={s.layout__list}>
             <List
-              key={list.id}
               title={list.name}
-              colorId={list.colorId}
-              tasks={tasks.filter((task: TTask) => task.listId === list.id)}
+              color={list.color.name}
+              tasks={list.tasks}
             />
             <NewTaskForm id='appTaskForm' onSubmit={() => {}} />
           </article>

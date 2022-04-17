@@ -1,14 +1,24 @@
 import { ReactNode } from 'react';
 
-export type TColorOld =
-  | 'grey'
-  | 'green'
-  | 'blue'
-  | 'pink'
-  | 'lightblue'
-  | 'violet'
-  | 'black'
-  | 'red';
+import axios from 'axios';
+
+const instance = axios.create({
+  baseURL: 'http://localhost:3001/',
+});
+
+export const todoAPI = {
+  getLists: () =>
+    instance.get<TTodoResponse>('lists?_embed=tasks&_expand=color'),
+  getColors: () => instance.get<TColorsResponse>('colors'),
+};
+
+export type TTodoResponse = TExpandedList[];
+export type TColorsResponse = TColor[];
+
+export type TExpandedList = TList & {
+  tasks: TTask[];
+  color: TColor;
+};
 
 export type TList = {
   id: number;
