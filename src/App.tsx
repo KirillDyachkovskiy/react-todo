@@ -11,7 +11,6 @@ import NewListForm from './components/NewListForm';
 import NewTaskForm from './components/NewTaskForm';
 import { TColor, TList, TTask } from './types/types';
 import data from './assets/database.json';
-import Layout from './layout';
 
 export default function App() {
   const [inputValue, setInputValue] = useState<string>('');
@@ -26,10 +25,6 @@ export default function App() {
     setTasks(data.tasks);
     setColors(data.colors);
   }, []);
-
-  if (true) {
-    return <Layout tasks={tasks} colors={colors} lists={lists} />;
-  }
 
   return (
     <section className='container'>
