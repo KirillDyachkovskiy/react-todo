@@ -1,21 +1,25 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { todoAPI } from '../../types/types';
 import { Input, Button } from '../../ui';
 import s from './newTaskForm.module.css';
 
 interface INewListForm {
-  id: string;
-  onSubmit: (name: string) => void;
+  listId: number;
 }
 
-export default function NewTaskForm({ id, onSubmit }: INewListForm) {
+export default function NewTaskForm({ listId }: INewListForm) {
   const [isFormVisible, setIsFormVisible] = useState<boolean>(false);
-  const [taskName, setTaskName] = useState<string>('');
+  const [text, setText] = useState<string>('');
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSubmit(taskName);
-    setTaskName('');
-    setIsFormVisible(false);
+
+    const response = await todoAPI.postTask({ text, completed: false, listId });
+
+    if (response.statusText === 'Created') {
+      setIsFormVisible(false);
+      setText('');
+    }
   };
 
   return (
@@ -54,10 +58,10 @@ export default function NewTaskForm({ id, onSubmit }: INewListForm) {
         <form className={s.newTaskForm__form} onSubmit={handleSubmit}>
           <Input
             placeholder='Текст задачи'
-            id={id}
-            value={taskName}
+            id={`list_${listId}`}
+            value={text}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setTaskName(e.target.value)
+              setText(e.target.value)
             }
           />
           <div className={s.newTaskForm__submit}>

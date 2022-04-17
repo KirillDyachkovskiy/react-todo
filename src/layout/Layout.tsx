@@ -53,7 +53,7 @@ export default function Layout({ lists }: ILayout) {
               color={list.color.name}
               tasks={list.tasks}
             />
-            <NewTaskForm id='appTaskForm' onSubmit={() => {}} />
+            <NewTaskForm listId={list.id} />
           </article>
         ))}
       </section>

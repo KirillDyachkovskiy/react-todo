@@ -34,26 +34,6 @@
       "name": "Курс по ReactJS ToDo",
       "colorId": 7,
       "id": 7
-    },
-    {
-      "name": "Workout",
-      "colorId": 2,
-      "id": 8
-    },
-    {
-      "name": "something ",
-      "colorId": 6,
-      "id": 9
-    },
-    {
-      "name": "good",
-      "colorId": 2,
-      "id": 10
-    },
-    {
-      "name": "bb",
-      "colorId": 1,
-      "id": 11
     }
   ],
   "tasks": [
@@ -140,6 +120,12 @@
       "text": "love",
       "completed": false,
       "id": 18
+    },
+    {
+      "text": "Влюбиться в кого-нибудь",
+      "completed": false,
+      "listId": 5,
+      "id": 19
     }
   ],
   "colors": [
