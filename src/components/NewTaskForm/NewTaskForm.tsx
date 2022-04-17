@@ -19,7 +19,11 @@ export default function NewTaskForm({ id, onSubmit }: INewListForm) {
 
   return (
     <div>
-      {isFormVisible ? (
+      {!isFormVisible ? (
+        <button type='button' onClick={() => setIsFormVisible(true)}>
+          Add new task
+        </button>
+      ) : (
         <div className={s.newTaskForm__box}>
           <Input
             id={id}
@@ -35,10 +39,6 @@ export default function NewTaskForm({ id, onSubmit }: INewListForm) {
             </Button>
           </div>
         </div>
-      ) : (
-        <button type='button' onClick={() => setIsFormVisible(true)}>
-          Add new task
-        </button>
       )}
     </div>
   );

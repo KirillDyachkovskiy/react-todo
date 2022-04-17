@@ -2,7 +2,18 @@
   position: relative;
 }
 
+.newListForm__button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px 5px 10px 10px;
+  gap: 10px;
+  font-size: var(--16px);
+}
+
 .newListForm__box {
+  width: 235px;
+  box-sizing: border-box;
   position: relative;
   padding: 20px;
   display: flex;
@@ -15,6 +26,6 @@
 
 .newListForm__cross {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -5px;
+  right: -5px;
 }

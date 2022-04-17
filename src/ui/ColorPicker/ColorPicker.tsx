@@ -6,7 +6,7 @@ import s from './colorPicker.module.css';
 interface IColorPicker {
   name: string;
   value: number | null;
-  onChange: Dispatch<SetStateAction<number | null>>;
+  onChange: Dispatch<SetStateAction<number>>;
   colors: TColor[];
 }
 

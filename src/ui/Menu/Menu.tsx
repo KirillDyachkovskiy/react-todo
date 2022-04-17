@@ -3,7 +3,7 @@ import { TList } from '../../types/types';
 import s from './menu.module.css';
 import getColorById from '../../helpers/getColorById';
 
-type TItems = TList & {
+export type TItems = TList & {
   icon?: ReactNode;
 };
 

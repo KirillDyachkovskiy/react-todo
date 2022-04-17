@@ -7,8 +7,14 @@
 }
 
 .layout__aside {
-  flex: 0 0 200px;
+  width: 200px;
+  box-sizing: border-box;
+  padding: 20px;
   background-color: var(--aside);
+}
+
+.layout__newListForm {
+  margin-top: 60px;
 }
 
 .layout__content {

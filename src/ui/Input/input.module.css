@@ -10,7 +10,7 @@
 
 .input:focus {
   outline: none;
-  border: 1px solid var(--input-border-hover);
+  border: 1px solid var(--input-placeholder);
 }
 
 .input::placeholder {

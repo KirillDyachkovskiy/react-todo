@@ -9,13 +9,13 @@ import Menu from './ui/Menu';
 import List from './ui/List';
 import ColorPicker from './ui/ColorPicker';
 import NewListForm from './components/NewListForm';
-import data from './assets/database.json';
 import NewTaskForm from './components/NewTaskForm';
+import data from './assets/database.json';
 
 export default function App() {
   const [inputValue, setInputValue] = useState<string>('');
   const [checkboxValue, setCheckboxValue] = useState<boolean>(false);
-  const [selectedColor, setSelectedColor] = useState<number | null>(null);
+  const [selectedColor, setSelectedColor] = useState<number>(1);
   const [lists, setLists] = useState<TList[]>([]);
   const [tasks, setTasks] = useState<TTask[]>([]);
   const [colors, setColors] = useState<TColor[]>([]);
