@@ -9,10 +9,13 @@ interface INewListForm {
 
 export default function NewTaskForm({ listId }: INewListForm) {
   const [isFormVisible, setIsFormVisible] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const [text, setText] = useState<string>('');
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const response = await todoAPI.postTask({ text, completed: false, listId });
 
@@ -20,6 +23,8 @@ export default function NewTaskForm({ listId }: INewListForm) {
       setIsFormVisible(false);
       setText('');
     }
+
+    setIsLoading(false);
   };
 
   return (
@@ -65,8 +70,14 @@ export default function NewTaskForm({ listId }: INewListForm) {
             }
           />
           <div className={s.newTaskForm__submit}>
-            <Button htmlType='submit'>Создать новый список</Button>
-            <Button type='secondary' onClick={() => setIsFormVisible(false)}>
+            <Button htmlType='submit' disabled={isLoading}>
+              Создать новый список
+            </Button>
+            <Button
+              type='secondary'
+              disabled={isLoading}
+              onClick={() => setIsFormVisible(false)}
+            >
               Отмена
             </Button>
           </div>
