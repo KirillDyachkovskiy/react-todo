@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 0 15px;
   display: flex;
-  height: 100vh;
+  height: 100%;
 }
 
 .layout__aside {
@@ -17,6 +17,16 @@
   margin-top: 60px;
 }
 
-.layout__content {
+.layout__lists {
   background-color: var(--white);
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.layout__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

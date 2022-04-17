@@ -1,9 +1,9 @@
-import { ChangeEvent, useState } from 'react';
-import { TColor } from '../../types/types';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import Input from '../../ui/Input';
-import ColorPicker from '../../ui/ColorPicker';
-import Button from '../../ui/Button';
 import Cross from '../../ui/Cross';
+import Button from '../../ui/Button';
+import ColorPicker from '../../ui/ColorPicker';
+import { TColor } from '../../types/types';
 import s from './newListForm.module.css';
 
 interface INewListForm {
@@ -17,13 +17,15 @@ export default function NewListForm({ id, colors, onSubmit }: INewListForm) {
   const [listName, setListName] = useState<string>('');
   const [listColorId, setListColorId] = useState<number>(1);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     onSubmit(listName, listColorId || 0);
+    setListName('');
     setIsPopupVisible(false);
   };
 
   return (
-    <div className={s.newListForm}>
+    <form className={s.newListForm} onSubmit={handleSubmit}>
       <Button
         type='air'
         onClick={() => setIsPopupVisible((prevState) => !prevState)}
@@ -73,9 +75,9 @@ export default function NewListForm({ id, colors, onSubmit }: INewListForm) {
             onChange={setListColorId}
             colors={colors}
           />
-          <Button onClick={handleSubmit}>Создать новый список</Button>
+          <Button htmlType='submit'>Создать новый список</Button>
         </div>
       )}
-    </div>
+    </form>
   );
 }

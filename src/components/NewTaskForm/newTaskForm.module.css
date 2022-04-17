@@ -1,4 +1,16 @@
-.newTaskForm__box {
+.newTaskForm__buttonContainer {
+  width: fit-content;
+}
+
+.newTaskForm__button {
+  display: flex;
+  align-items: center;
+  padding-left: 2px;
+  gap: 15px;
+  font-size: var(--16px);
+}
+
+.newTaskForm__form {
   display: flex;
   flex-direction: column;
   gap: 10px;

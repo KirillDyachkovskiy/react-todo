@@ -1,16 +1,17 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { TColor, TList, TTask } from './types/types';
-import Button from './ui/Button';
-import Input from './ui/Input';
 import Mark from './ui/Mark';
-import Checkbox from './ui/Checkbox';
-import Cross from './ui/Cross';
 import Menu from './ui/Menu';
 import List from './ui/List';
+import Cross from './ui/Cross';
+import Input from './ui/Input';
+import Button from './ui/Button';
+import Checkbox from './ui/Checkbox';
 import ColorPicker from './ui/ColorPicker';
 import NewListForm from './components/NewListForm';
 import NewTaskForm from './components/NewTaskForm';
+import { TColor, TList, TTask } from './types/types';
 import data from './assets/database.json';
+import Layout from './layout';
 
 export default function App() {
   const [inputValue, setInputValue] = useState<string>('');
@@ -25,6 +26,10 @@ export default function App() {
     setTasks(data.tasks);
     setColors(data.colors);
   }, []);
+
+  if (true) {
+    return <Layout tasks={tasks} colors={colors} lists={lists} />;
+  }
 
   return (
     <section className='container'>

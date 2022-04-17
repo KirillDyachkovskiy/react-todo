@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export type TColorOld =
   | 'grey'
   | 'green'
@@ -12,6 +14,10 @@ export type TList = {
   id: number;
   name: string;
   colorId: number;
+};
+
+export type TItems = TList & {
+  icon?: ReactNode;
 };
 
 export type TTask = {

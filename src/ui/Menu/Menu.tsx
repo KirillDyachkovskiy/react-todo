@@ -1,11 +1,7 @@
-import { ReactNode, useState } from 'react';
-import { TList } from '../../types/types';
-import s from './menu.module.css';
+import { useState } from 'react';
 import getColorById from '../../helpers/getColorById';
-
-export type TItems = TList & {
-  icon?: ReactNode;
-};
+import { TItems } from '../../types/types';
+import s from './menu.module.css';
 
 interface IMenu {
   name: string;
