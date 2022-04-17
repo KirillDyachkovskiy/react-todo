@@ -10,8 +10,7 @@ export const todoAPI = {
   getLists: () =>
     instance.get<TTodoResponse>('lists?_embed=tasks&_expand=color'),
   getColors: () => instance.get<TColorsResponse>('colors'),
-  postList: (data: TPostListResponse) =>
-    instance.post<TPostListResponse>('lists', data),
+  postList: (data: TPostListResponse) => instance.post<TList>('lists', data),
 };
 
 export type TTodoResponse = TExpandedList[];
@@ -29,7 +28,7 @@ export type TList = {
   colorId: number;
 };
 
-export type TItems = TList & {
+export type TItems = TExpandedList & {
   icon?: ReactNode;
 };
 

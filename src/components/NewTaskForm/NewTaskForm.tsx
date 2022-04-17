@@ -1,6 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import Input from '../../ui/Input';
-import Button from '../../ui/Button';
+import { Input, Button } from '../../ui';
 import s from './newTaskForm.module.css';
 
 interface INewListForm {

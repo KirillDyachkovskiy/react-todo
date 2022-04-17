@@ -1,9 +1,6 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import Input from '../../ui/Input';
-import Cross from '../../ui/Cross';
-import Button from '../../ui/Button';
-import ColorPicker from '../../ui/ColorPicker';
-import { TColor, TColorsResponse, todoAPI } from '../../types/types';
+import { ChangeEvent, FormEvent, useState } from 'react';
+import { todoAPI } from '../../types/types';
+import { Button, ColorPicker, Cross, Input } from '../../ui';
 import s from './newListForm.module.css';
 
 interface INewListForm {
@@ -11,8 +8,6 @@ interface INewListForm {
 }
 
 export default function NewListForm({ id }: INewListForm) {
-  const [colors, setColors] = useState<TColor[]>([]);
-
   const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -23,18 +18,15 @@ export default function NewListForm({ id }: INewListForm) {
     e.preventDefault();
     setIsLoading(true);
 
-    await todoAPI.postList({ name, colorId });
+    const response = await todoAPI.postList({ name, colorId });
 
-    setIsPopupVisible(false);
+    if (response.statusText === 'Created') {
+      setIsPopupVisible(false);
+      setListName('');
+    }
+
     setIsLoading(false);
-    setListName('');
   };
-
-  useEffect(() => {
-    todoAPI
-      .getColors()
-      .then(({ data }: { data: TColorsResponse }) => setColors(data));
-  }, []);
 
   return (
     <form className={s.newListForm} onSubmit={handleSubmit}>
@@ -81,12 +73,7 @@ export default function NewListForm({ id }: INewListForm) {
               setListName(e.target.value)
             }
           />
-          <ColorPicker
-            name={id}
-            value={colorId}
-            onChange={setColorId}
-            colors={colors}
-          />
+          <ColorPicker name={id} value={colorId} onChange={setColorId} />
           <Button htmlType='submit' disabled={isLoading}>
             Создать новый список
           </Button>

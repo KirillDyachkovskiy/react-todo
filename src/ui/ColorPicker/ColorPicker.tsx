@@ -1,21 +1,22 @@
-import { Dispatch, SetStateAction } from 'react';
-import { TColor } from '../../types/types';
-import getColorById from '../../helpers/getColorById';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { TColor, TColorsResponse, todoAPI } from '../../types/types';
 import s from './colorPicker.module.css';
 
 interface IColorPicker {
   name: string;
   value: number | null;
   onChange: Dispatch<SetStateAction<number>>;
-  colors: TColor[];
 }
 
-export default function ColorPicker({
-  name,
-  value,
-  onChange,
-  colors,
-}: IColorPicker) {
+export default function ColorPicker({ name, value, onChange }: IColorPicker) {
+  const [colors, setColors] = useState<TColor[]>([]);
+
+  useEffect(() => {
+    todoAPI
+      .getColors()
+      .then(({ data }: { data: TColorsResponse }) => setColors(data));
+  }, [setColors]);
+
   return (
     <ul className={s.colorPicker}>
       {colors.map((color: TColor) => (
@@ -29,7 +30,7 @@ export default function ColorPicker({
               onChange={() => onChange(color.id)}
             />
             <span
-              style={{ backgroundColor: `var(--${getColorById(color.id)})` }}
+              style={{ backgroundColor: `var(--${color.name})` }}
               className={s.colorPicker__mark}
             />
           </label>

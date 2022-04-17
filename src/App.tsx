@@ -9,7 +9,7 @@ export default function App() {
     todoAPI
       .getLists()
       .then(({ data }: { data: TTodoResponse }) => setLists(data));
-  }, []);
+  }, [setLists]);
 
   return <Layout lists={lists} />;
 }

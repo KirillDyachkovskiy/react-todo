@@ -1,9 +1,7 @@
-import Menu from '../ui/Menu';
-import NewListForm from '../components/NewListForm';
 import { TExpandedList } from '../types/types';
+import { NewListForm, NewTaskForm } from '../components';
+import { Menu, List } from '../ui';
 import s from './layout.module.css';
-import List from '../ui/List';
-import NewTaskForm from '../components/NewTaskForm';
 
 interface ILayout {
   lists: TExpandedList[];
@@ -20,6 +18,12 @@ export default function Layout({ lists }: ILayout) {
               id: 0,
               name: 'Все задачи',
               colorId: 0,
+              tasks: [],
+              color: {
+                id: 0,
+                hex: '',
+                name: '',
+              },
               icon: (
                 <svg
                   width='14'

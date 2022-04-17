@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import getColorById from '../../helpers/getColorById';
 import { TItems } from '../../types/types';
 import s from './menu.module.css';
 
@@ -31,7 +30,7 @@ export default function Menu({ name, items }: IMenu) {
                 ) : (
                   <span
                     style={{
-                      backgroundColor: `var(--${getColorById(item.colorId)})`,
+                      backgroundColor: `var(--${item.color.name})`,
                     }}
                     className={s.menu__mark}
                   />
