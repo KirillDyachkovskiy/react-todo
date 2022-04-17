@@ -3,6 +3,7 @@ import s from './button.module.css';
 
 interface IButton {
   children: ReactNode;
+  disabled?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   type?: 'accent' | 'secondary' | 'air';
   htmlType?: 'button' | 'submit';
@@ -11,14 +12,16 @@ interface IButton {
 export default function Button({
   children,
   onClick,
+  disabled = false,
   type = 'accent',
   htmlType = 'button',
 }: IButton) {
   return (
     <button
+      className={`${s.button} ${s[`button_type_${type}`]}`}
       type={htmlType === 'button' ? 'button' : 'submit'}
       onClick={onClick}
-      className={`${s.button} ${s[`button_type_${type}`]}`}
+      disabled={disabled}
     >
       {children}
     </button>

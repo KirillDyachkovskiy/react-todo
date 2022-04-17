@@ -8,20 +8,26 @@ import s from './newListForm.module.css';
 
 interface INewListForm {
   id: string;
-  onSubmit: (title: string, colorId: number) => void;
 }
 
-export default function NewListForm({ id, onSubmit }: INewListForm) {
-  const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
-  const [listName, setListName] = useState<string>('');
+export default function NewListForm({ id }: INewListForm) {
   const [colors, setColors] = useState<TColor[]>([]);
-  const [listColorId, setListColorId] = useState<number>(1);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const [name, setListName] = useState<string>('');
+  const [colorId, setColorId] = useState<number>(1);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSubmit(listName, listColorId || 0);
-    setListName('');
+    setIsLoading(true);
+
+    await todoAPI.postList({ name, colorId });
+
     setIsPopupVisible(false);
+    setIsLoading(false);
+    setListName('');
   };
 
   useEffect(() => {
@@ -70,18 +76,20 @@ export default function NewListForm({ id, onSubmit }: INewListForm) {
           <Input
             placeholder='Название папки'
             id={id}
-            value={listName}
+            value={name}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setListName(e.target.value)
             }
           />
           <ColorPicker
             name={id}
-            value={listColorId}
-            onChange={setListColorId}
+            value={colorId}
+            onChange={setColorId}
             colors={colors}
           />
-          <Button htmlType='submit'>Создать новый список</Button>
+          <Button htmlType='submit' disabled={isLoading}>
+            Создать новый список
+          </Button>
         </div>
       )}
     </form>

@@ -38,7 +38,7 @@ export default function Layout({ lists }: ILayout) {
           ]}
         />
         <div className={s.layout__newListForm}>
-          <NewListForm id='appListForm' onSubmit={() => {}} />
+          <NewListForm id='appListForm' />
         </div>
       </aside>
       <section className={s.layout__lists}>
