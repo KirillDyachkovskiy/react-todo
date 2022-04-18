@@ -17,6 +17,7 @@
 }
 
 .newTaskForm__submit {
+  width: fit-content;
   display: flex;
   gap: 5px;
 }

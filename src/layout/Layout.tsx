@@ -1,6 +1,6 @@
-import { TExpandedList } from '../types/types';
-import { NewListForm, NewTaskForm } from '../components';
-import { Menu, List } from '../ui';
+import { useState } from 'react';
+import { TExpandedList, todoAPI } from '../types/types';
+import { NewListForm, Menu, List } from '../components';
 import s from './layout.module.css';
 
 interface ILayout {
@@ -8,10 +8,19 @@ interface ILayout {
 }
 
 export default function Layout({ lists }: ILayout) {
+  const [activeId, setActiveId] = useState<number>(1);
+
+  const handleListDelete = async (listId: number) => {
+    await todoAPI.deleteList(listId);
+  };
+
   return (
     <main className={s.layout}>
       <aside className={s.layout__aside}>
         <Menu
+          value={activeId}
+          onChange={setActiveId}
+          removeItem={handleListDelete}
           name='appMenu'
           items={[
             {
@@ -46,16 +55,13 @@ export default function Layout({ lists }: ILayout) {
         </div>
       </aside>
       <section className={s.layout__lists}>
-        {lists.map((list: TExpandedList) => (
-          <article key={list.id} className={s.layout__list}>
-            <List
-              title={list.name}
-              color={list.color.name}
-              tasks={list.tasks}
-            />
-            <NewTaskForm listId={list.id} />
-          </article>
-        ))}
+        {activeId
+          ? lists
+              .filter((list: TExpandedList) => list.id === activeId)
+              .map((list: TExpandedList) => <List key={list.id} list={list} />)
+          : lists.map((list: TExpandedList) => (
+              <List key={list.id} list={list} />
+            ))}
       </section>
     </main>
   );

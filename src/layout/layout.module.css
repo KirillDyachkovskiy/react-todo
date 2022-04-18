@@ -19,14 +19,9 @@
 
 .layout__lists {
   background-color: var(--white);
-  margin: 50px;
+  padding: 50px;
+  width: 550px;
   display: flex;
   flex-direction: column;
   gap: 50px;
-}
-
-.layout__list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 }

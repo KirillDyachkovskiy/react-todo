@@ -49,6 +49,15 @@
 .menu__label {
   overflow: hidden;
   white-space: nowrap;
-  margin-left: 25px;
+  margin: 0 20px 0 25px;
   text-overflow: ellipsis;
+}
+
+.menu__cross {
+  position: absolute;
+  right: 13px;
+}
+
+.menu__cross:hover {
+  filter: brightness(.8);
 }
