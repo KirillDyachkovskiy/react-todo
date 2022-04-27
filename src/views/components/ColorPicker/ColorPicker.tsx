@@ -1,6 +1,49 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { TColor, TColorsResponse, todoAPI } from '../../types/types';
+import { Dispatch, SetStateAction } from 'react';
+import { TColor } from '../../../data/types/types';
 import s from './colorPicker.module.css';
+
+const colors: TColor[] = [
+  {
+    id: 1,
+    hex: '#C9D1D3',
+    name: 'grey',
+  },
+  {
+    id: 2,
+    hex: '#42B883',
+    name: 'green',
+  },
+  {
+    id: 3,
+    hex: '#64C4ED',
+    name: 'blue',
+  },
+  {
+    id: 4,
+    hex: '#FFBBCC',
+    name: 'pink',
+  },
+  {
+    id: 5,
+    hex: '#B6E6BD',
+    name: 'lime',
+  },
+  {
+    id: 6,
+    hex: '#C355F5',
+    name: 'purple',
+  },
+  {
+    id: 7,
+    hex: '#110133',
+    name: 'black',
+  },
+  {
+    id: 8,
+    hex: '#FF6464',
+    name: 'red',
+  },
+];
 
 interface IColorPicker {
   name: string;
@@ -9,14 +52,6 @@ interface IColorPicker {
 }
 
 export default function ColorPicker({ name, value, onChange }: IColorPicker) {
-  const [colors, setColors] = useState<TColor[]>([]);
-
-  useEffect(() => {
-    todoAPI
-      .getColors()
-      .then(({ data }: { data: TColorsResponse }) => setColors(data));
-  }, [setColors]);
-
   return (
     <ul className={s.colorPicker}>
       {colors.map((color: TColor) => (

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { TExpandedList, todoAPI } from '../types/types';
+import { useDeleteListMutation } from '../../data/redux/todosApi';
+import { TExpandedList } from '../../data/types/types';
 import { NewListForm, Menu, List } from '../components';
 import s from './layout.module.css';
 
@@ -9,10 +10,7 @@ interface ILayout {
 
 export default function Layout({ lists }: ILayout) {
   const [activeId, setActiveId] = useState<number>(1);
-
-  const handleListDelete = async (listId: number) => {
-    await todoAPI.deleteList(listId);
-  };
+  const [deleteList] = useDeleteListMutation();
 
   return (
     <main className={s.layout}>
@@ -20,7 +18,7 @@ export default function Layout({ lists }: ILayout) {
         <Menu
           value={activeId}
           onChange={setActiveId}
-          removeItem={handleListDelete}
+          removeItem={(id) => deleteList({ id })}
           name='appMenu'
           items={[
             {

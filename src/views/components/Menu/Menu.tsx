@@ -1,4 +1,4 @@
-import { TItems } from '../../types/types';
+import { TItems } from '../../../data/types/types';
 import { Button } from '../../ui';
 import s from './menu.module.css';
 

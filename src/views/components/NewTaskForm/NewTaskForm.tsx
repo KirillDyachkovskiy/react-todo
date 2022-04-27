@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { todoAPI } from '../../types/types';
+import { usePostTaskMutation } from '../../../data/redux/todosApi';
+import { TTask } from '../../../data/types/types';
 import { Input, Button } from '../../ui';
 import s from './newTaskForm.module.css';
 
@@ -9,22 +10,16 @@ interface INewListForm {
 
 export default function NewTaskForm({ listId }: INewListForm) {
   const [isFormVisible, setIsFormVisible] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
   const [text, setText] = useState<string>('');
+  const [postTask, { isLoading }] = usePostTaskMutation();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsLoading(true);
 
-    const response = await todoAPI.postTask({ text, completed: false, listId });
+    await postTask({ text, completed: false, listId } as TTask);
 
-    if (response.statusText === 'Created') {
-      setIsFormVisible(false);
-      setText('');
-    }
-
-    setIsLoading(false);
+    setIsFormVisible(false);
+    setText('');
   };
 
   return (

@@ -1,15 +1,8 @@
-import { useEffect, useState } from 'react';
-import { TTodoResponse, todoAPI, TExpandedList } from './types/types';
-import Layout from './layout';
+import { useGetListsQuery } from './data/redux/todosApi';
+import Layout from './views/layout';
 
 export default function App() {
-  const [lists, setLists] = useState<TExpandedList[]>([]);
+  const { data: lists } = useGetListsQuery(null);
 
-  useEffect(() => {
-    todoAPI
-      .getLists()
-      .then(({ data }: { data: TTodoResponse }) => setLists(data));
-  }, [setLists]);
-
-  return <Layout lists={lists} />;
+  return <Layout lists={lists || []} />;
 }

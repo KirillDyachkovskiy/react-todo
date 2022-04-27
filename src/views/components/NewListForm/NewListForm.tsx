@@ -1,7 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { todoAPI } from '../../types/types';
-import { Button, ColorPicker, Cross, Input } from '../../ui';
+import ColorPicker from '../ColorPicker';
+import { Button, Cross, Input } from '../../ui';
 import s from './newListForm.module.css';
+import { usePostListMutation } from '../../../data/redux/todosApi';
+import { TList } from '../../../data/types/types';
 
 interface INewListForm {
   id: string;
@@ -9,23 +11,18 @@ interface INewListForm {
 
 export default function NewListForm({ id }: INewListForm) {
   const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [name, setListName] = useState<string>('');
   const [colorId, setColorId] = useState<number>(1);
+  const [postList, { isLoading }] = usePostListMutation();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsLoading(true);
 
-    const response = await todoAPI.postList({ name, colorId });
+    await postList({ name, colorId } as TList);
 
-    if (response.statusText === 'Created') {
-      setIsPopupVisible(false);
-      setListName('');
-    }
-
-    setIsLoading(false);
+    setIsPopupVisible(false);
+    setListName('');
   };
 
   return (

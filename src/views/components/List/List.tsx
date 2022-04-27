@@ -1,7 +1,7 @@
-import { TExpandedList, TTask } from '../../types/types';
+import { TExpandedList, TTask } from '../../../data/types/types';
 import NewTaskForm from '../NewTaskForm';
-import { Checkbox } from '../../ui';
 import s from './list.module.css';
+import Task from '../Task';
 
 interface IList {
   list: TExpandedList;
@@ -20,13 +20,7 @@ export default function List({ list }: IList) {
       </div>
       <div className={s.list__content}>
         {list.tasks.map((task: TTask) => (
-          <Checkbox
-            key={task.id}
-            id={String(task.id)}
-            checked={task.completed}
-            onChange={() => {}}
-            label={task.text}
-          />
+          <Task key={task.id} {...task} />
         ))}
         <NewTaskForm listId={list.id} />
       </div>

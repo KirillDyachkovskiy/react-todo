@@ -116,12 +116,6 @@
       "id": 17
     },
     {
-      "listId": 8,
-      "text": "love",
-      "completed": false,
-      "id": 18
-    },
-    {
       "text": "Влюбиться в кого-нибудь",
       "completed": false,
       "listId": 5,
@@ -132,6 +126,42 @@
       "completed": false,
       "listId": 5,
       "id": 20
+    },
+    {
+      "text": "adfadf",
+      "completed": false,
+      "listId": 1,
+      "id": 21
+    },
+    {
+      "text": "dafdaaf",
+      "completed": false,
+      "listId": 1,
+      "id": 22
+    },
+    {
+      "text": "sasa",
+      "completed": false,
+      "listId": 1,
+      "id": 23
+    },
+    {
+      "text": "find a job",
+      "completed": false,
+      "listId": 1,
+      "id": 24
+    },
+    {
+      "text": "sadf",
+      "completed": false,
+      "listId": 7,
+      "id": 25
+    },
+    {
+      "text": ";p;",
+      "completed": false,
+      "listId": 1,
+      "id": 26
     }
   ],
   "colors": [
