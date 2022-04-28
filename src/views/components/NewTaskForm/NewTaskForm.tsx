@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { usePostTaskMutation } from '../../../data/redux/todosApi';
-import { TTask } from '../../../data/types/types';
+import { TTask } from '../../../data/types';
 import { Input, Button } from '../../ui';
 import s from './newTaskForm.module.css';
 

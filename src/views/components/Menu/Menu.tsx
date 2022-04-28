@@ -1,10 +1,11 @@
-import { TItems } from '../../../data/types/types';
+import { TMenuItem } from '../../../data/types';
+
 import { Button } from '../../ui';
 import s from './menu.module.css';
 
 interface IMenu {
   name: string;
-  items: Array<TItems>;
+  items: TMenuItem[];
   value: number;
   onChange: (itemId: number) => void;
   removeItem: (itemId: number) => void;
@@ -19,7 +20,7 @@ export default function Menu({
 }: IMenu) {
   return (
     <ul className={s.menu}>
-      {items.map((item: TItems) => (
+      {items.map((item: TMenuItem) => (
         <li className={s.menu__li} key={item.id}>
           <label htmlFor={`${name}_${item.id}`}>
             <input

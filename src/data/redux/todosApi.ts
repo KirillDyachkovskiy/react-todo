@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { TExpandedList, TList, TTask } from '../types/types';
+import { TExpandedList, TList, TTask } from '../types';
 
 export const todosApi = createApi({
   reducerPath: 'todosApi',

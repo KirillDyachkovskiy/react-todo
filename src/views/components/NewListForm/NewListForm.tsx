@@ -1,9 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import ColorPicker from '../ColorPicker';
+import ColorPicker from '../../ui/ColorPicker';
 import { Button, Cross, Input } from '../../ui';
 import s from './newListForm.module.css';
 import { usePostListMutation } from '../../../data/redux/todosApi';
-import { TList } from '../../../data/types/types';
+import { TList } from '../../../data/types';
 
 interface INewListForm {
   id: string;

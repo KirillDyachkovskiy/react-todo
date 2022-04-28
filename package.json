@@ -28,7 +28,7 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "lint:fix": "eslint ./ --fix",
-    "json-server": "json-server src/data/assets/database.json --watch --port 3001"
+    "json-server": "json-server src/data/database.json --watch --port 3001"
   },
   "eslintConfig": {
     "extends": [

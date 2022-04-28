@@ -1,7 +1,7 @@
-import { TExpandedList, TTask } from '../../../data/types/types';
 import NewTaskForm from '../NewTaskForm';
-import s from './list.module.css';
 import Task from '../Task';
+import { TExpandedList, TTask } from '../../../data/types';
+import s from './list.module.css';
 
 interface IList {
   list: TExpandedList;

@@ -1,6 +1,8 @@
 import { useState } from 'react';
+
 import { useDeleteListMutation } from '../../data/redux/todosApi';
-import { TExpandedList } from '../../data/types/types';
+import { TExpandedList } from '../../data/types';
+
 import { NewListForm, Menu, List } from '../components';
 import s from './layout.module.css';
 

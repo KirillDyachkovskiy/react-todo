@@ -5,14 +5,14 @@ export type TExpandedList = TList & {
   color: TColor;
 };
 
+export type TMenuItem = TExpandedList & {
+  icon?: ReactNode;
+};
+
 export type TList = {
   id: number;
   name: string;
   colorId: number;
-};
-
-export type TItems = TExpandedList & {
-  icon?: ReactNode;
 };
 
 export type TTask = {
@@ -27,3 +27,5 @@ export type TColor = {
   hex: string;
   name: string;
 };
+
+export type TIcon = 'cross' | 'menu' | 'pen' | 'plus';

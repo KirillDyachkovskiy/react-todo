@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { TColor } from '../../../data/types/types';
+import { TColor } from '../../../data/types';
 import s from './colorPicker.module.css';
 
 const colors: TColor[] = [
