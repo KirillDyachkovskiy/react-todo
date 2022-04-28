@@ -32,7 +32,7 @@ export const todosApi = createApi({
         method: 'POST',
         body,
       }),
-      invalidatesTags: ['Lists'],
+      invalidatesTags: ['Lists', 'Tasks'],
     }),
     deleteList: builder.mutation<TList, { id: number }>({
       query: ({ id }) => ({
@@ -46,6 +46,13 @@ export const todosApi = createApi({
         url: 'tasks',
         method: 'POST',
         body,
+      }),
+      invalidatesTags: ['Tasks'],
+    }),
+    deleteTask: builder.mutation<TTask, { taskId: number }>({
+      query: ({ taskId }) => ({
+        url: `tasks/${taskId}`,
+        method: 'DELETE',
       }),
       invalidatesTags: ['Tasks'],
     }),
@@ -66,5 +73,6 @@ export const {
   usePostListMutation,
   useDeleteListMutation,
   usePostTaskMutation,
+  useDeleteTaskMutation,
   useSetTaskStatusMutation,
 } = todosApi;

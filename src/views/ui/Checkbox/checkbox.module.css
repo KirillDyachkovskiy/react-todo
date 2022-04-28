@@ -3,8 +3,6 @@
   cursor: pointer;
   font-size: var(--16px);
   font-weight: var(--500);
-  display: flex;
-  align-items: center;
 }
 
 .check__input {

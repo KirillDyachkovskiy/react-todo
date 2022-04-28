@@ -30,14 +30,8 @@ export default function Layout({ lists, sections }: ILayout) {
             {
               id: 0,
               name: 'Все задачи',
-              color: {
-                id: 0,
-                hex: '#ffffff',
-                name: 'white',
-              },
-              colorId: 0,
               icon: <Icon name='menu' />,
-            },
+            } as TMenuItem,
             ...lists,
           ]}
         />
@@ -46,8 +40,8 @@ export default function Layout({ lists, sections }: ILayout) {
         </div>
       </aside>
       <section className={s.layout__lists}>
-        {sections.map((list: TExpandedList) => (
-          <List key={list.id} list={list} />
+        {sections.map(({ id, color, name, tasks }: TExpandedList) => (
+          <List key={id} id={id} name={name} color={color.name} tasks={tasks} />
         ))}
       </section>
     </main>
