@@ -18,14 +18,23 @@ export default function Layout({ lists, sections }: ILayout) {
   const dispatch = useDispatch();
   const activeListId = useSelector(selectActiveListId);
 
+  const handleTabChange = (id: number) => {
+    dispatch(setActiveListId({ id }));
+  };
+
+  const handleListDelete = async (id: number) => {
+    await deleteList({ id });
+    handleTabChange(0);
+  };
+
   return (
     <div className={s.layout}>
-      <main className={s.layout_wrapper}>
+      <main className={s.layout__wrapper}>
         <aside className={s.layout__aside}>
           <Menu
             value={activeListId}
-            onChange={(id) => dispatch(setActiveListId({ id }))}
-            removeItem={(id) => deleteList({ id })}
+            onChange={handleTabChange}
+            removeItem={handleListDelete}
             name='appMenu'
             items={[
               {

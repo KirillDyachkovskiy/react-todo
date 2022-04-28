@@ -1,11 +1,6 @@
 {
   "lists": [
     {
-      "id": 1,
-      "name": "Продажи",
-      "colorId": 5
-    },
-    {
       "id": 2,
       "name": "Фронтенд",
       "colorId": 4
@@ -16,29 +11,19 @@
       "colorId": 2
     },
     {
-      "id": 5,
       "name": "Личное",
-      "colorId": 1
-    },
-    {
-      "name": "Шахматы",
-      "colorId": 8,
-      "id": 8
-    },
-    {
-      "name": "Финансы",
-      "colorId": 5,
-      "id": 10
-    },
-    {
-      "name": "РЭУ",
-      "colorId": 5,
+      "colorId": 1,
       "id": 11
     },
     {
-      "name": "JS",
-      "colorId": 5,
+      "name": "JavaScript",
+      "colorId": 8,
       "id": 12
+    },
+    {
+      "name": "Финансы",
+      "colorId": 1,
+      "id": 14
     }
   ],
   "tasks": [
@@ -67,18 +52,6 @@
       "completed": false
     },
     {
-      "listId": 1,
-      "text": "test",
-      "completed": false,
-      "id": 6
-    },
-    {
-      "listId": 1,
-      "text": "make",
-      "completed": true,
-      "id": 8
-    },
-    {
       "listId": 4,
       "text": "Купить 1984!",
       "completed": true,
@@ -86,27 +59,9 @@
     },
     {
       "text": "Влюбиться в кого-нибудь",
-      "completed": true,
-      "listId": 5,
-      "id": 19
-    },
-    {
-      "text": "find a job",
       "completed": false,
-      "listId": 1,
-      "id": 24
-    },
-    {
-      "text": "something",
-      "completed": false,
-      "listId": 1,
-      "id": 27
-    },
-    {
-      "text": "nice",
-      "completed": false,
-      "listId": 1,
-      "id": 28
+      "listId": 11,
+      "id": 29
     }
   ],
   "colors": [

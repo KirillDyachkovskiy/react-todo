@@ -1,19 +1,21 @@
 .layout {
-  width: 750px;
   height: 530px;
+  width: 750px;
   margin: 160px auto 0;
   box-shadow: 0 2px 10px -2px var(--shadow);
+  border-radius: 5px;
   overflow-y: auto;
 }
 
-.layout_wrapper {
+.layout__wrapper {
   display: flex;
 }
 
 .layout__aside {
+  min-height: 530px;
   width: 200px;
   box-sizing: border-box;
-  padding: 20px;
+  padding: 20px 20px 200px 20px;
   background-color: var(--aside);
 }
 
@@ -22,10 +24,11 @@
 }
 
 .layout__lists {
+  min-height: 530px;
+  width: 550px;
   box-sizing: border-box;
   background-color: var(--white);
   padding: 50px;
-  width: 550px;
   display: flex;
   flex-direction: column;
   gap: 50px;

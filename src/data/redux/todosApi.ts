@@ -4,7 +4,7 @@ import { TExpandedList, TList, TMenuItem, TTask } from '../types';
 export const todosApi = createApi({
   reducerPath: 'todosApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
-  tagTypes: ['Lists', 'Tasks'],
+  tagTypes: ['Tasks'],
   endpoints: (builder) => ({
     getSections: builder.query<TExpandedList[], { id: number }>({
       query: ({ id }) => ({
@@ -24,7 +24,7 @@ export const todosApi = createApi({
           _expand: 'color',
         },
       }),
-      providesTags: ['Lists'],
+      providesTags: ['Tasks'],
     }),
     postList: builder.mutation<TList, TList>({
       query: (body) => ({
@@ -32,14 +32,14 @@ export const todosApi = createApi({
         method: 'POST',
         body,
       }),
-      invalidatesTags: ['Lists', 'Tasks'],
+      invalidatesTags: ['Tasks'],
     }),
     deleteList: builder.mutation<TList, { id: number }>({
       query: ({ id }) => ({
         url: `lists/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Lists'],
+      invalidatesTags: ['Tasks'],
     }),
     postTask: builder.mutation<TTask, TTask>({
       query: (body) => ({

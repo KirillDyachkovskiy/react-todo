@@ -1,5 +1,6 @@
 .newListForm {
   position: relative;
+  z-index: 10;
 }
 
 .newListForm__button {
@@ -13,7 +14,7 @@
 .newListForm__box {
   width: 235px;
   box-sizing: border-box;
-  position: relative;
+  position: absolute;
   padding: 20px;
   display: flex;
   flex-direction: column;
