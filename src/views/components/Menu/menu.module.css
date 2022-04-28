@@ -56,6 +56,8 @@
 .menu__cross {
   position: absolute;
   right: 13px;
+  color: var(--black);
+  fill: var(--black)
 }
 
 .menu__cross:hover {

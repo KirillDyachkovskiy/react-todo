@@ -1,9 +1,10 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import ColorPicker from '../../ui/ColorPicker';
-import { Button, Cross, Input } from '../../ui';
-import s from './newListForm.module.css';
 import { usePostListMutation } from '../../../data/redux/todosApi';
 import { TList } from '../../../data/types';
+
+import ColorPicker from '../ColorPicker';
+import { Button, Cross, Icon, Input } from '../../ui';
+import s from './newListForm.module.css';
 
 interface INewListForm {
   id: string;
@@ -32,28 +33,7 @@ export default function NewListForm({ id }: INewListForm) {
         onClick={() => setIsPopupVisible((prevState) => !prevState)}
       >
         <div className={s.newListForm__button}>
-          <svg
-            width='12'
-            height='12'
-            viewBox='0 0 12 12'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              d='M6 1V11'
-              stroke='#868686'
-              strokeWidth='1.5'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-            <path
-              d='M1 6H11'
-              stroke='#868686'
-              strokeWidth='1.5'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-          </svg>
+          <Icon name='plus' />
           Добавить папку
         </div>
       </Button>

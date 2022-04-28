@@ -1,21 +1,10 @@
 import { TIcon } from '../../../data/types';
 
 interface IIcon {
-  size: number;
-  color: string;
-  icon: TIcon;
+  name: TIcon;
 }
 
-export default function Icon({ size, color, icon }: IIcon) {
-  return (
-    <svg
-      viewBox='0 0 24 24'
-      width={size}
-      height={size}
-      xmlns='http://www.w3.org/2000/svg'
-      xmlnsXlink='http://www.w3.org/1999/xlink'
-    >
-      <path fill={color} d={`./icons${icon}`} />
-    </svg>
-  );
+export default function Icon({ name }: IIcon) {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires,global-require,import/no-dynamic-require
+  return <img src={require(`./icons/${name}.svg`)} alt={name} />;
 }
