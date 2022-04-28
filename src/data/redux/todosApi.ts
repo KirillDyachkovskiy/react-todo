@@ -1,16 +1,26 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { TExpandedList, TList, TTask } from '../types';
+import { TExpandedList, TList, TMenuItem, TTask } from '../types';
 
 export const todosApi = createApi({
   reducerPath: 'todosApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
-  tagTypes: ['Lists'],
+  tagTypes: ['Lists', 'Tasks'],
   endpoints: (builder) => ({
-    getLists: builder.query<TExpandedList[], null>({
-      query: () => ({
+    getSections: builder.query<TExpandedList[], { id: number }>({
+      query: ({ id }) => ({
         url: 'lists',
         params: {
           _embed: 'tasks',
+          _expand: 'color',
+          ...(id && { id }),
+        },
+      }),
+      providesTags: ['Tasks'],
+    }),
+    getLists: builder.query<TMenuItem[], null>({
+      query: () => ({
+        url: 'lists',
+        params: {
           _expand: 'color',
         },
       }),
@@ -37,7 +47,7 @@ export const todosApi = createApi({
         method: 'POST',
         body,
       }),
-      invalidatesTags: ['Lists'],
+      invalidatesTags: ['Tasks'],
     }),
     setTaskStatus: builder.mutation<TTask, { completed: boolean; id: number }>({
       query: ({ completed, id }) => ({
@@ -45,12 +55,13 @@ export const todosApi = createApi({
         method: 'PATCH',
         body: { completed },
       }),
-      invalidatesTags: ['Lists'],
+      invalidatesTags: ['Tasks'],
     }),
   }),
 });
 
 export const {
+  useGetSectionsQuery,
   useGetListsQuery,
   usePostListMutation,
   useDeleteListMutation,

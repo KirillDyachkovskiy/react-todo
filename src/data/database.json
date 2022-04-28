@@ -29,6 +29,16 @@
       "name": "Курс по ReactJS ToDo",
       "colorId": 7,
       "id": 7
+    },
+    {
+      "name": "adfdf",
+      "colorId": 3,
+      "id": 8
+    },
+    {
+      "name": "Шахматы",
+      "colorId": 8,
+      "id": 9
     }
   ],
   "tasks": [
@@ -112,7 +122,7 @@
     },
     {
       "text": "Влюбиться в кого-нибудь",
-      "completed": false,
+      "completed": true,
       "listId": 5,
       "id": 19
     },
@@ -157,6 +167,18 @@
       "completed": false,
       "listId": 1,
       "id": 26
+    },
+    {
+      "text": "something",
+      "completed": false,
+      "listId": 1,
+      "id": 27
+    },
+    {
+      "text": "начать бегать по утрам",
+      "completed": false,
+      "listId": 6,
+      "id": 28
     }
   ],
   "colors": [

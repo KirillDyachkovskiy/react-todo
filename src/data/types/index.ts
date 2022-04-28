@@ -5,7 +5,8 @@ export type TExpandedList = TList & {
   color: TColor;
 };
 
-export type TMenuItem = TExpandedList & {
+export type TMenuItem = TList & {
+  color: TColor;
   icon?: ReactNode;
 };
 

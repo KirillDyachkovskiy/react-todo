@@ -1,39 +1,41 @@
-import { useState } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { useDeleteListMutation } from '../../data/redux/todosApi';
-import { TExpandedList } from '../../data/types';
+import { setActiveListId } from '../../data/redux/filtersSlice';
+import { selectActiveListId } from '../../data/redux/store';
+import { TExpandedList, TMenuItem } from '../../data/types';
 
 import { NewListForm, Menu, List } from '../components';
 import { Icon } from '../ui';
 import s from './layout.module.css';
 
 interface ILayout {
-  lists: TExpandedList[];
+  sections: TExpandedList[];
+  lists: TMenuItem[];
 }
 
-export default function Layout({ lists }: ILayout) {
-  const [activeId, setActiveId] = useState<number>(1);
+export default function Layout({ lists, sections }: ILayout) {
   const [deleteList] = useDeleteListMutation();
+  const dispatch = useDispatch();
+  const activeListId = useSelector(selectActiveListId);
 
   return (
     <main className={s.layout}>
       <aside className={s.layout__aside}>
         <Menu
-          value={activeId}
-          onChange={setActiveId}
+          value={activeListId}
+          onChange={(id) => dispatch(setActiveListId({ id }))}
           removeItem={(id) => deleteList({ id })}
           name='appMenu'
           items={[
             {
               id: 0,
               name: 'Все задачи',
-              colorId: 0,
-              tasks: [],
               color: {
                 id: 0,
-                hex: '',
-                name: '',
+                hex: '#ffffff',
+                name: 'white',
               },
+              colorId: 0,
               icon: <Icon name='menu' />,
             },
             ...lists,
@@ -44,7 +46,7 @@ export default function Layout({ lists }: ILayout) {
         </div>
       </aside>
       <section className={s.layout__lists}>
-        {lists.map((list: TExpandedList) => (
+        {sections.map((list: TExpandedList) => (
           <List key={list.id} list={list} />
         ))}
       </section>
