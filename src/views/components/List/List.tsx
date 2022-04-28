@@ -1,4 +1,7 @@
-import { useDeleteTaskMutation } from '../../../data/redux/todosApi';
+import {
+  useDeleteTaskMutation,
+  useSetTaskStatusMutation,
+} from '../../../data/redux/todosApi';
 import { TTask } from '../../../data/types';
 
 import NewTaskForm from '../NewTaskForm';
@@ -14,6 +17,7 @@ interface IList {
 
 export default function List({ id, color, name, tasks }: IList) {
   const [deleteTask] = useDeleteTaskMutation();
+  const [setTaskStatus] = useSetTaskStatusMutation();
 
   return (
     <article>
@@ -27,8 +31,11 @@ export default function List({ id, color, name, tasks }: IList) {
           <Task
             key={taskId}
             id={taskId}
-            completed={completed}
             text={text}
+            completed={completed}
+            setTaskStatus={() =>
+              setTaskStatus({ completed: !completed, taskId })
+            }
             removeTask={() => deleteTask({ taskId })}
           />
         ))}

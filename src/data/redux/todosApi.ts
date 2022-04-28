@@ -56,9 +56,12 @@ export const todosApi = createApi({
       }),
       invalidatesTags: ['Tasks'],
     }),
-    setTaskStatus: builder.mutation<TTask, { completed: boolean; id: number }>({
-      query: ({ completed, id }) => ({
-        url: `tasks/${id}`,
+    setTaskStatus: builder.mutation<
+      TTask,
+      { completed: boolean; taskId: number }
+    >({
+      query: ({ completed, taskId }) => ({
+        url: `tasks/${taskId}`,
         method: 'PATCH',
         body: { completed },
       }),

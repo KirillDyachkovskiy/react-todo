@@ -19,31 +19,39 @@ export default function Layout({ lists, sections }: ILayout) {
   const activeListId = useSelector(selectActiveListId);
 
   return (
-    <main className={s.layout}>
-      <aside className={s.layout__aside}>
-        <Menu
-          value={activeListId}
-          onChange={(id) => dispatch(setActiveListId({ id }))}
-          removeItem={(id) => deleteList({ id })}
-          name='appMenu'
-          items={[
-            {
-              id: 0,
-              name: 'Все задачи',
-              icon: <Icon name='menu' />,
-            } as TMenuItem,
-            ...lists,
-          ]}
-        />
-        <div className={s.layout__newListForm}>
-          <NewListForm id='appListForm' />
-        </div>
-      </aside>
-      <section className={s.layout__lists}>
-        {sections.map(({ id, color, name, tasks }: TExpandedList) => (
-          <List key={id} id={id} name={name} color={color.name} tasks={tasks} />
-        ))}
-      </section>
-    </main>
+    <div className={s.layout}>
+      <main className={s.layout_wrapper}>
+        <aside className={s.layout__aside}>
+          <Menu
+            value={activeListId}
+            onChange={(id) => dispatch(setActiveListId({ id }))}
+            removeItem={(id) => deleteList({ id })}
+            name='appMenu'
+            items={[
+              {
+                id: 0,
+                name: 'Все задачи',
+                icon: <Icon name='menu' />,
+              } as TMenuItem,
+              ...lists,
+            ]}
+          />
+          <div className={s.layout__newListForm}>
+            <NewListForm id='appListForm' />
+          </div>
+        </aside>
+        <section className={s.layout__lists}>
+          {sections.map(({ id, color, name, tasks }: TExpandedList) => (
+            <List
+              key={id}
+              id={id}
+              name={name}
+              color={color.name}
+              tasks={tasks}
+            />
+          ))}
+        </section>
+      </main>
+    </div>
   );
 }

@@ -1,4 +1,5 @@
 .check {
+  position: relative;
   padding-left: 35px;
   cursor: pointer;
   font-size: var(--16px);

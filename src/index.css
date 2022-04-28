@@ -2,6 +2,7 @@
   --ff: Roboto;
   --aside: rgba(229, 229, 229, 1);
   --white: rgba(255, 255, 255, 1);
+  --shadow: rgba(0, 0, 0, .2);
   --accent: rgba(77, 213, 153, 1);
   --secondary: rgba(242, 242, 242, 1);
   --text-accent: rgba(255, 255, 255, 1);
@@ -26,12 +27,12 @@
 }
 
 body {
+  background-image: url('views/images/sky.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   margin: 0;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.container {
-  margin: 50px;
 }

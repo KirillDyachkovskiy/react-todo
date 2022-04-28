@@ -21,9 +21,24 @@
       "colorId": 1
     },
     {
-      "name": "Курс по ReactJS ToDo",
-      "colorId": 7,
-      "id": 7
+      "name": "Шахматы",
+      "colorId": 8,
+      "id": 8
+    },
+    {
+      "name": "Финансы",
+      "colorId": 5,
+      "id": 10
+    },
+    {
+      "name": "РЭУ",
+      "colorId": 5,
+      "id": 11
+    },
+    {
+      "name": "JS",
+      "colorId": 5,
+      "id": 12
     }
   ],
   "tasks": [
@@ -70,24 +85,6 @@
       "id": 10
     },
     {
-      "listId": 7,
-      "text": "Сделали сайдбар",
-      "completed": true,
-      "id": 15
-    },
-    {
-      "listId": 7,
-      "text": "Сделали список задач",
-      "completed": true,
-      "id": 16
-    },
-    {
-      "listId": 7,
-      "text": "Сделали удаление и редактирование задач и списков",
-      "completed": false,
-      "id": 17
-    },
-    {
       "text": "Влюбиться в кого-нибудь",
       "completed": true,
       "listId": 5,
@@ -104,6 +101,12 @@
       "completed": false,
       "listId": 1,
       "id": 27
+    },
+    {
+      "text": "nice",
+      "completed": false,
+      "listId": 1,
+      "id": 28
     }
   ],
   "colors": [
