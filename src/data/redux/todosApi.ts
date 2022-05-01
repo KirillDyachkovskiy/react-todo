@@ -34,6 +34,14 @@ export const todosApi = createApi({
       }),
       invalidatesTags: ['Tasks'],
     }),
+    renameList: builder.mutation<TTask, { listId: number; name: string }>({
+      query: ({ name, listId }) => ({
+        url: `lists/${listId}`,
+        method: 'PATCH',
+        body: { name },
+      }),
+      invalidatesTags: ['Tasks'],
+    }),
     deleteList: builder.mutation<TList, { id: number }>({
       query: ({ id }) => ({
         url: `lists/${id}`,
@@ -49,13 +57,6 @@ export const todosApi = createApi({
       }),
       invalidatesTags: ['Tasks'],
     }),
-    deleteTask: builder.mutation<TTask, { taskId: number }>({
-      query: ({ taskId }) => ({
-        url: `tasks/${taskId}`,
-        method: 'DELETE',
-      }),
-      invalidatesTags: ['Tasks'],
-    }),
     setTaskStatus: builder.mutation<
       TTask,
       { completed: boolean; taskId: number }
@@ -67,6 +68,21 @@ export const todosApi = createApi({
       }),
       invalidatesTags: ['Tasks'],
     }),
+    renameTask: builder.mutation<TTask, { text: string; taskId: number }>({
+      query: ({ text, taskId }) => ({
+        url: `tasks/${taskId}`,
+        method: 'PATCH',
+        body: { text },
+      }),
+      invalidatesTags: ['Tasks'],
+    }),
+    deleteTask: builder.mutation<TTask, { taskId: number }>({
+      query: ({ taskId }) => ({
+        url: `tasks/${taskId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Tasks'],
+    }),
   }),
 });
 
@@ -74,8 +90,10 @@ export const {
   useGetSectionsQuery,
   useGetListsQuery,
   usePostListMutation,
+  useRenameListMutation,
   useDeleteListMutation,
   usePostTaskMutation,
+  useRenameTaskMutation,
   useDeleteTaskMutation,
   useSetTaskStatusMutation,
 } = todosApi;

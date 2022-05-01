@@ -1,12 +1,28 @@
 .list__header {
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
   padding-bottom: 20px;
   margin-bottom: 30px;
   border-bottom: 1px solid var(--secondary);
 }
 
+.list__header:hover .list__button {
+  opacity: 1;
+}
+
 .list__title {
+  outline: none;
+  border: 0;
+  padding: 0;
   margin: 0;
+  font-weight: var(--700);
   font-size: var(--32px);
+}
+
+.list__button {
+  opacity: 0;
+  flex: 0 0 20px;
 }
 
 .list__content {

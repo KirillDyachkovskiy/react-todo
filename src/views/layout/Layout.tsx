@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useDeleteListMutation } from '../../data/redux/todosApi';
+import {
+  useDeleteListMutation,
+  useRenameListMutation,
+} from '../../data/redux/todosApi';
 import { setActiveListId } from '../../data/redux/filtersSlice';
 import { selectActiveListId } from '../../data/redux/store';
 import { TExpandedList, TMenuItem } from '../../data/types';
@@ -14,9 +17,11 @@ interface ILayout {
 }
 
 export default function Layout({ lists, sections }: ILayout) {
-  const [deleteList] = useDeleteListMutation();
   const dispatch = useDispatch();
   const activeListId = useSelector(selectActiveListId);
+
+  const [deleteList] = useDeleteListMutation();
+  const [renameList] = useRenameListMutation();
 
   const handleTabChange = (id: number) => {
     dispatch(setActiveListId({ id }));
@@ -57,6 +62,7 @@ export default function Layout({ lists, sections }: ILayout) {
               name={name}
               color={color.name}
               tasks={tasks}
+              renameList={renameList}
             />
           ))}
         </section>

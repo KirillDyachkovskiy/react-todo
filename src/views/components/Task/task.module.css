@@ -4,6 +4,10 @@
   gap: 20px;
 }
 
+.task__input {
+  margin-left: 35px;
+}
+
 .task__button {
   flex: 0 0 20px;
   visibility: hidden;
