@@ -2,9 +2,9 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { TExpandedList, TList, TMenuItem, TTask } from '../types';
 
 export const todosApi = createApi({
-  reducerPath: 'todosApi',
+  reducerPath: 'todos',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
-  tagTypes: ['Tasks'],
+  tagTypes: ['Tasks', 'Lists'],
   endpoints: (builder) => ({
     getSections: builder.query<TExpandedList[], { id: number }>({
       query: ({ id }) => ({
@@ -15,7 +15,7 @@ export const todosApi = createApi({
           ...(id && { id }),
         },
       }),
-      providesTags: ['Tasks'],
+      providesTags: ['Tasks', 'Lists'],
     }),
     getLists: builder.query<TMenuItem[], null>({
       query: () => ({
@@ -24,7 +24,7 @@ export const todosApi = createApi({
           _expand: 'color',
         },
       }),
-      providesTags: ['Tasks'],
+      providesTags: ['Lists'],
     }),
     postList: builder.mutation<TList, TList>({
       query: (body) => ({
@@ -32,7 +32,7 @@ export const todosApi = createApi({
         method: 'POST',
         body,
       }),
-      invalidatesTags: ['Tasks'],
+      invalidatesTags: ['Lists'],
     }),
     renameList: builder.mutation<TTask, { listId: number; name: string }>({
       query: ({ name, listId }) => ({
@@ -40,14 +40,14 @@ export const todosApi = createApi({
         method: 'PATCH',
         body: { name },
       }),
-      invalidatesTags: ['Tasks'],
+      invalidatesTags: ['Lists'],
     }),
     deleteList: builder.mutation<TList, { id: number }>({
       query: ({ id }) => ({
         url: `lists/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Tasks'],
+      invalidatesTags: ['Lists'],
     }),
     postTask: builder.mutation<TTask, TTask>({
       query: (body) => ({

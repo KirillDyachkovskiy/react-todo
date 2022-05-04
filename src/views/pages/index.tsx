@@ -1,35 +1,26 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 import {
-  useDeleteListMutation,
   useRenameListMutation,
+  useDeleteListMutation,
+  useGetListsQuery,
+  useGetSectionsQuery,
 } from '../../data/redux/todosApi';
-import { setActiveListId } from '../../data/redux/filtersSlice';
-import { selectActiveListId } from '../../data/redux/store';
 import { TExpandedList, TMenuItem } from '../../data/types';
-
-import { NewListForm, Menu, List } from '../components';
+import { List, Menu, NewListForm } from '../components';
 import { Icon } from '../ui';
-import s from './layout.module.css';
+import s from './app.module.css';
 
-interface ILayout {
-  sections: TExpandedList[];
-  lists: TMenuItem[];
-}
-
-export default function Layout({ lists, sections }: ILayout) {
-  const dispatch = useDispatch();
-  const activeListId = useSelector(selectActiveListId);
+export default function App() {
+  const [activeListId, setActiveListId] = useState<number>(0);
+  const { data: sections } = useGetSectionsQuery({ id: activeListId });
+  const { data: lists } = useGetListsQuery(null);
 
   const [deleteList] = useDeleteListMutation();
   const [renameList] = useRenameListMutation();
 
-  const handleTabChange = (id: number) => {
-    dispatch(setActiveListId({ id }));
-  };
-
   const handleListDelete = async (id: number) => {
     await deleteList({ id });
-    handleTabChange(0);
+    setActiveListId(0);
   };
 
   return (
@@ -38,7 +29,7 @@ export default function Layout({ lists, sections }: ILayout) {
         <aside className={s.layout__aside}>
           <Menu
             value={activeListId}
-            onChange={handleTabChange}
+            onChange={setActiveListId}
             removeItem={handleListDelete}
             name='appMenu'
             items={[
@@ -47,7 +38,7 @@ export default function Layout({ lists, sections }: ILayout) {
                 name: 'Все задачи',
                 icon: <Icon name='menu' />,
               } as TMenuItem,
-              ...lists,
+              ...(lists || []),
             ]}
           />
           <div className={s.layout__newListForm}>
@@ -55,7 +46,7 @@ export default function Layout({ lists, sections }: ILayout) {
           </div>
         </aside>
         <section className={s.layout__lists}>
-          {sections.map(({ id, color, name, tasks }: TExpandedList) => (
+          {sections?.map(({ id, color, name, tasks }: TExpandedList) => (
             <List
               key={id}
               id={id}
